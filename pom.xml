@@ -44,7 +44,7 @@
       <username>johnnymike2021</username>
       
       <password>Muluken62</password>
-      <applicationName>sample-project</applicationName>
+      <applicationName>sample-project-1</applicationName>
       <environment>Sandbox</environment>
       <workers>1</workers>
       <workerType>Micro</workerType>
