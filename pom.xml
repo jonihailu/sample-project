@@ -42,6 +42,7 @@
 				<password>Muluken62</password>
 				<applicationName>sample-project</applicationName>
 				<environment>Sandbox</environment>
+				<ObjectStoreV2>True</ObjectStoreV2>
 				<workers>1</workers>
 				<workerType>Micro</workerType>
                 </configuration>
