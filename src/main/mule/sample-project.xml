@@ -7,7 +7,7 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
 	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="dbcefb6a-493e-49d8-8633-bc1040889f4e" >
-		<http:listener-connection host="0.0.0.0" port="8083" />
+		<http:listener-connection host="0.0.0.0" port="8082" />
 	</http:listener-config>
 	<db:config name="Database_Config" doc:name="Database Config" doc:id="bb87341f-ee67-4e50-919a-34e02aebf184" >
 		<db:mssql-connection host="localhost" port="1433" user="joni" password="123456" databaseName="ethiopia" />
