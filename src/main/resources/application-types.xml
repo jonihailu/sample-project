@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<types:mule xmlns:types="http://www.mulesoft.org/schema/mule/types">
+  <types:catalog>
+    <types:type name="inputjson" format="json">
+      <types:shape format="weave" example="examples/mule.json"><![CDATA[%dw 2.0
+
+type inputjson = Array<{|  id: Number {"typeId": "int"},   Fname: String,   Lname: String|}> {"example": "[{\\\"id\\\":123,\\\"Fname\\\":\\\"john\\\",\\\"Lname\\\":\\\"Michael\\\"},{\\\"id\\\":321,\\\"Fname\\\":\\\"Michael\\\",\\\"Lname\\\":\\\"john\\\"}]"}
+
+]]></types:shape>
+    </types:type>
+    <types:type name="outputjson" format="json">
+      <types:shape format="weave" example="examples/mule-1.json"><![CDATA[%dw 2.0
+
+type outputjson = Array<{|  id: Number {"typeId": "int"},   Fname: String,   Lname: String|}> {"example": "[{\\\"id\\\":123,\\\"Fname\\\":\\\"john\\\",\\\"Lname\\\":\\\"Michael\\\"},{\\\"id\\\":321,\\\"Fname\\\":\\\"Michael\\\",\\\"Lname\\\":\\\"john\\\"}]"}
+
+]]></types:shape>
+    </types:type>
+  </types:catalog>
+  <types:enrichment select="#773dd5e9-bf7f-4583-a393-a73af5eeb052">
+    <types:processor-declaration>
+      <types:output-event>
+        <types:message>
+          <types:payload type="outputjson"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+</types:mule>

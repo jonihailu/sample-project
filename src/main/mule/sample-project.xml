@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:db="http://www.mulesoft.org/schema/mule/db"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="dbcefb6a-493e-49d8-8633-bc1040889f4e" >
+		<http:listener-connection host="0.0.0.0" port="8083" />
+	</http:listener-config>
+	<db:config name="Database_Config" doc:name="Database Config" doc:id="bb87341f-ee67-4e50-919a-34e02aebf184" >
+		<db:mssql-connection host="localhost" port="1433" user="joni" password="123456" databaseName="ethiopia" />
+	</db:config>
+	<flow name="sample-projectFlow" doc:id="387f2842-a0a3-4d65-84eb-461ed03c1c76" >
+		<http:listener doc:name="Listener" doc:id="710e2591-e6f7-4395-b9d0-8475aa37340e" config-ref="HTTP_Listener_config" path="/sample"/>
+		<db:select doc:name="Select" doc:id="2708d028-ee44-4f2f-9cfe-b226fe7e82a9" config-ref="Database_Config">
+			<db:sql ><![CDATA[select id,Fname,Lname from mule1]]></db:sql>
+		</db:select>
+		<ee:transform doc:name="Transform Message" doc:id="773dd5e9-bf7f-4583-a393-a73af5eeb052" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload map ( payload01 , indexOfPayload01 ) -> {
+	id: payload01.id,
+	Fname: payload01.Fname default "",
+	Lname: payload01.Lname default ""
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>
