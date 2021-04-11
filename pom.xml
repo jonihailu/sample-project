@@ -32,7 +32,6 @@
 				<configuration>
 				<sharedLibraries>
                         <sharedLibrary>
-                             <uri>https://anypoint.mulesoft.com</uri>
 						      <muleVersion>4.3.0</muleVersion>
 						      <username>johnnymike2021</username>
 						      <password>Muluken62</password>
